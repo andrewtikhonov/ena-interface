@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <display-name>ENA Data Provider Servlet</display-name>
+
+    <!--
+
+        ENA Data Provider
+
+    -->
+
+    <display-name>ENA Data Provider</display-name>
+    <servlet>
+        <servlet-name>ENA Data Provider</servlet-name>
+        <servlet-class>service.servlet.EnaDataProviderServlet</servlet-class>
+        <init-param>
+            <param-name>track.name</param-name>
+            <param-value>ena.data</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ENA Data Provider</servlet-name>
+        <url-pattern>/ena.data</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <description>Storage</description>
+        <param-name>storage</param-name>
+        <param-value>
+            /ebi/microarray/home/andrew/bfarm/storage
+         </param-value>
+    </context-param>
+
+    <context-param>
+        <description>New</description>
+        <param-name>new</param-name>
+        <param-value>
+            /ebi/microarray/home/andrew/bfarm/new
+         </param-value>
+    </context-param>
+
+    <context-param>
+        <description>Processing</description>
+        <param-name>processing</param-name>
+        <param-value>
+            /ebi/microarray/home/andrew/bfarm/processing
+         </param-value>
+    </context-param>
+
+    <context-param>
+        <description>Done</description>
+        <param-name>done</param-name>
+        <param-value>
+            /ebi/microarray/home/andrew/bfarm/done
+         </param-value>
+    </context-param>
+
+    <context-param>
+        <description>Jobs</description>
+        <param-name>output</param-name>
+        <param-value>
+            /ebi/microarray/home/andrew/bfarm/output
+         </param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>SubmissionServlet</servlet-name>
+        <servlet-class>service.bfarm.BFSubmission</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SubmissionServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StatusServlet</servlet-name>
+        <servlet-class>service.bfarm.BFStatus</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StatusServlet</servlet-name>
+        <url-pattern>/status</url-pattern>
+    </servlet-mapping>
+
+
+    <session-config>
+        <session-timeout>3</session-timeout>
+    </session-config>
+</web-app>
+
